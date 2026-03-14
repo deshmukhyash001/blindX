@@ -15,36 +15,32 @@ from groke import grokeAi
 import cv2
 import time
 
-def click_photo():
-    cam = cv2.VideoCapture(0)
+# def click_photo():
+#     cam = cv2.VideoCapture(0)
 
-    if not cam.isOpened():
-        return False
+#     if not cam.isOpened():
+#         return False
 
-    # Warm up the camera (very important)
-    time.sleep(1)  # wait 1 second
+#     # Warm up the camera (very important)
+#     time.sleep(1)  # wait 1 second
 
-    # Throw away first few frames
-    for _ in range(10):
-        cam.read()
+#     # Throw away first few frames
+#     for _ in range(10):
+#         cam.read()
 
-    ret, frame = cam.read()
+#     ret, frame = cam.read()
 
-    if ret:
-        cv2.imwrite("new_image.jpeg", frame)
-        cam.release()
-        return "new_image.jpeg"
-    else:
-        cam.release()
-        return False
+#     if ret:
+#         cv2.imwrite("new_image.jpeg", frame)
+#         cam.release()
+#         return "new_image.jpeg"
+#     else:
+#         cam.release()
+#         return False
         
-    cam.release()
-    cv2.destroyAllWindows
+#     cam.release()
+#     cv2.destroyAllWindows
 
-
-def speak(text):
-    print(text)
-    os.system(f'say "{text}"')
 
 def cases(command):
     command = command.lower().strip()
@@ -59,131 +55,131 @@ def cases(command):
 
     # if "time" in command:
     #     now = datetime.datetime.now().strftime('%I:%M %p')
-    #     speak(f"The current time is {now}")
+    #     return(f"The current time is {now}")
     
 
     if "date" in command:
         today = datetime.datetime.now().strftime('%A, %d %B %Y')
-        speak(f"Today is {today}")
+        return(f"Today is {today}")
 
     elif "day today" in command:
-        speak(datetime.datetime.now().strftime('%A'))
+        return(datetime.datetime.now().strftime('%A'))
 
     elif "month" in command:
-        speak(datetime.datetime.now().strftime('%B'))
+        return(datetime.datetime.now().strftime('%B'))
 
     elif "year" in command:
-        speak(datetime.datetime.now().strftime('%Y'))
+        return(datetime.datetime.now().strftime('%Y'))
 
     elif "good morning" in command:
-        speak("Good morning. I hope you have a wonderful day.")
+        return("Good morning. I hope you have a wonderful day.")
 
     elif "good night" in command:
-        speak("Good night. Rest well.")
+        return("Good night. Rest well.")
 
     elif "good evening" in command:
-        speak("Good evening.")
+        return("Good evening.")
 
     elif "how are you" in command:
-        speak("I am functioning perfectly and ready to assist you.")
+        return("I am functioning perfectly and ready to assist you.")
 
     elif "who are you" in command:
-        speak("I am your voice assistant designed for accessibility.")
+        return("I am your voice assistant designed for accessibility.")
 
     # =============================
     # 11–30 WEB COMMANDS
     # =============================
 
     elif "open google" in command:
-        speak("Opening Google.")
+        return("Opening Google.")
         webbrowser.open("https://google.com")
 
     elif "open youtube" in command:
-        speak("Opening YouTube.")
+        return("Opening YouTube.")
         webbrowser.open("https://youtube.com")
 
     elif "open github" in command:
-        speak("Opening GitHub.")
+        return("Opening GitHub.")
         webbrowser.open("https://github.com")
 
     elif "open gmail" in command:
-        speak("Opening Gmail.")
+        return("Opening Gmail.")
         webbrowser.open("https://mail.google.com")
 
     elif "open drive" in command:
-        speak("Opening Google Drive.")
+        return("Opening Google Drive.")
         webbrowser.open("https://drive.google.com")
 
     elif "open maps" in command:
-        speak("Opening Google Maps.")
+        return("Opening Google Maps.")
         webbrowser.open("https://maps.google.com")
 
     elif "open news" in command:
-        speak("Opening news page.")
+        return("Opening news page.")
         webbrowser.open("https://news.google.com")
 
     elif "check weather" in command:
-        speak("Opening weather page.")
+        return("Opening weather page.")
         webbrowser.open("https://google.com/search?q=weather")
 
     elif "search google" in command:
         query = command.replace("search google", "").strip()
         if query:
-            speak(f"Searching Google for {query}")
+            return(f"Searching Google for {query}")
             webbrowser.open(f"https://google.com/search?q={query}")
         else:
-            speak("Please tell me what to search.")
+            return("Please tell me what to search.")
 
     elif "search youtube" in command:
         query = command.replace("search youtube", "").strip()
         if query:
-            speak(f"Searching YouTube for {query}")
+            return(f"Searching YouTube for {query}")
             webbrowser.open(f"https://youtube.com/results?search_query={query}")
         else:
-            speak("Please tell me what to search.")
+            return("Please tell me what to search.")
 
     # =============================
     # 31–50 SYSTEM CONTROL
     # =============================
 
     elif "open terminal" in command:
-        speak("Opening terminal.")
+        return("Opening terminal.")
         os.system("open -a Terminal")
 
     elif "open calculator" in command:
-        speak("Opening calculator.")
+        return("Opening calculator.")
         os.system("open -a Calculator")
 
     elif "open calendar" in command:
-        speak("Opening calendar.")
+        return("Opening calendar.")
         os.system("open -a Calendar")
 
     elif "open notes" in command:
-        speak("Opening notes.")
+        return("Opening notes.")
         os.system("open -a Notes")
 
     elif "open mail" in command:
-        speak("Opening mail.")
+        return("Opening mail.")
         os.system("open -a Mail")
 
     elif "open downloads" in command:
-        speak("Opening downloads folder.")
+        return("Opening downloads folder.")
         os.system("open ~/Downloads")
 
     elif "open documents" in command:
-        speak("Opening documents folder.")
+        return("Opening documents folder.")
         os.system("open ~/Documents")
 
     elif "check battery" in command:
-        speak("Checking battery status.")
+        return("Checking battery status.")
         os.system("pmset -g batt")
 
     elif "system uptime" in command:
-        speak("Checking system uptime.")
+        return("Checking system uptime.")
         os.system("uptime")
 
     elif "check disk space" in command:
-        speak("Checking disk space.")
+        return("Checking disk space.")
         os.system("df -h")
 
     # =============================
@@ -191,43 +187,43 @@ def cases(command):
     # =============================
 
     elif "play music" in command:
-        speak("Opening music application.")
+        return("Opening music application.")
         os.system("open -a Music")
 
     elif "pause music" in command:
-        speak("Pausing music.")
+        return("Pausing music.")
         os.system("osascript -e 'tell application \"Music\" to pause'")
 
     elif "next song" in command:
-        speak("Playing next song.")
+        return("Playing next song.")
         os.system("osascript -e 'tell application \"Music\" to next track'")
 
     elif "previous song" in command:
-        speak("Playing previous song.")
+        return("Playing previous song.")
         os.system("osascript -e 'tell application \"Music\" to previous track'")
 
     elif "stop music" in command:
-        speak("Stopping music.")
+        return("Stopping music.")
         os.system("osascript -e 'tell application \"Music\" to stop'")
 
     elif "volume up" in command:
-        speak("Increasing volume.")
+        return("Increasing volume.")
         os.system("osascript -e 'set volume output volume ((output volume of (get volume settings)) + 10)'")
 
     elif "volume down" in command:
-        speak("Decreasing volume.")
+        return("Decreasing volume.")
         os.system("osascript -e 'set volume output volume ((output volume of (get volume settings)) - 10)'")
 
     elif "mute system" in command:
-        speak("Muting system.")
+        return("Muting system.")
         os.system("osascript -e 'set volume with output muted'")
 
     elif "unmute system" in command:
-        speak("Unmuting system.")
+        return("Unmuting system.")
         os.system("osascript -e 'set volume without output muted'")
 
     elif "open camera" in command:
-        speak("Opening camera.")
+        return("Opening camera.")
         os.system("open -a Photo Booth")
 
     # =============================
@@ -239,26 +235,26 @@ def cases(command):
         if note:
             with open("memory.txt", "a") as f:
                 f.write(note + "\n")
-            speak("Your note has been saved.")
+            return("Your note has been saved.")
         else:
-            speak("Please tell me what to remember.")
+            return("Please tell me what to remember.")
 
     elif "show memory" in command:
-        speak("Reading your saved notes.")
+        return("Reading your saved notes.")
         try:
             with open("memory.txt", "r") as f:
                 notes = f.readlines()
                 if notes:
                     for note in notes:
-                        speak(note.strip())
+                        return(note.strip())
                 else:
-                    speak("You have no saved notes.")
+                    return("You have no saved notes.")
         except:
-            speak("Memory file not found.")
+            return("Memory file not found.")
 
     elif "clear memory" in command:
         open("memory.txt", "w").close()
-        speak("All memory cleared.")
+        return("All memory cleared.")
 
     # =============================
     # 91–120 FUN & INTERACTION
@@ -269,88 +265,82 @@ def cases(command):
             "Why do programmers prefer dark mode? Because light attracts bugs.",
             "Why did Python go to school? To improve its class."
         ]
-        speak(random.choice(jokes))
+        return(random.choice(jokes))
 
     elif "flip a coin" in command:
-        speak(random.choice(["Heads", "Tails"]))
+        return(random.choice(["Heads", "Tails"]))
 
     elif "roll a dice" in command:
-        speak(f"You rolled {random.randint(1,6)}")
+        return(f"You rolled {random.randint(1,6)}")
 
     elif "random number" in command:
-        speak(f"Your random number is {random.randint(1,100)}")
+        return(f"Your random number is {random.randint(1,100)}")
 
     elif "generate password" in command:
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
-        speak(f"Your password is {password}")
+        return(f"Your password is {password}")
 
     elif "motivate me" in command:
-        speak("Stay consistent. Discipline builds success.")
+        return("Stay consistent. Discipline builds success.")
 
     elif "tell me a fact" in command:
-        speak("Honey never spoils.")
+        return("Honey never spoils.")
 
     elif "help" in command:
-        speak("You can ask about time, date, search web, play music, or save notes.")
+        return("You can ask about time, date, search web, play music, or save notes.")
 
     elif "repeat" in command:
-        speak("Please tell me what to repeat.")
+        return("Please tell me what to repeat.")
 
     elif "guide me" in command:
-        speak("You can say commands like what is the time, open YouTube, tell joke, or remember this.")
+        return("You can say commands like what is the time, open YouTube, tell joke, or remember this.")
 
     # =============================
     # 121–150 ADVANCED + SAFETY
     # =============================
 
     elif "slow mode" in command:
-        speak("Slow speech mode activated.")
+        return("Slow speech mode activated.")
         os.system("say -r 120 Slow mode activated")
 
     elif "fast mode" in command:
-        speak("Fast speech mode activated.")
+        return("Fast speech mode activated.")
         os.system("say -r 250 Fast mode activated")
 
     elif "what is artificial intelligence" in command:
-        speak("Artificial intelligence is simulation of human intelligence in machines.")
+        return("Artificial intelligence is simulation of human intelligence in machines.")
 
     elif "who is prime minister of india" in command:
-        speak("Narendra Modi is the Prime Minister of India.")
+        return("Narendra Modi is the Prime Minister of India.")
 
     elif "what is python" in command:
-        speak("Python is a powerful programming language.")
+        return("Python is a powerful programming language.")
 
     elif "what is javascript" in command:
-        speak("JavaScript is the language of the web.")
+        return("JavaScript is the language of the web.")
 
     elif "are you intelligent" in command:
-        speak("I am continuously learning and improving.")
+        return("I am continuously learning and improving.")
 
     elif "do you sleep" in command:
-        speak("I do not sleep. I am always ready.")
+        return("I do not sleep. I am always ready.")
 
     elif "exit" in command or "stop listening" in command:
-        speak("Are you sure you want to exit? Say confirm to proceed.")
+        return("Are you sure you want to exit? Say confirm to proceed.")
 
     elif "confirm" in command:
-        speak("Assistant shutting down. Goodbye.")
+        return("Assistant shutting down. Goodbye.")
         exit()
         
     elif "around" in command:
-        click_photo()
         image = "new_image.jpeg"
         if image:
             data = nvidiaAi_image(command,image)
-            print(data)
-            speak(data)
-            return True
+            return data
             
         else:
-            speak("Can't get your view")
-            return False
+            return("Can't get your view")
         
     else:
         data = nvidiaAi(command)
-        print(data)
-        speak(data)
-        return True
+        return(data)
